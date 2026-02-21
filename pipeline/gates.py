@@ -3,6 +3,7 @@ import os
 import sys
 import yaml
 
+from device_simulator import fleet
 from datetime import datetime, UTC
 
 HISTORY_FILE  = os.path.join(os.path.dirname(__file__), '..', 'reports', 'test_history.json')
@@ -52,32 +53,65 @@ def evaluate(pytest_report=PYTEST_REPORT) -> dict:
     }
 
 
+def _bump_version(version: str) -> str:
+    """Increment the patch number: 1.0.249 → 1.0.250"""
+    major, minor, patch = version.split(".")
+    return f"{major}.{minor}.{int(patch) + 1}"
+
+
 def append_to_history(gate_result: dict):
     """
-    Append one row to test_history.json after every CI run so the
-    Streamlit dashboard reflects real CI health over time.
-    This func is called by CI after gate evaluation, regardless of pass/fail.
+    After pytest gate evaluation, simulate a staging rollout and append the
+    result as a normal_release row to test_history.json.
+
+    If pytest itself failed the gate (before any device touched), record a
+    blocked row so the dashboard still reflects the CI run.
+
+    Called after every CI run regardless of pass/fail.
     """
     with open(HISTORY_FILE) as f:
         history = json.load(f)
 
     day = len(history) + 1
-    row = {
-        "day":                day,
-        "date":               datetime.now(UTC).strftime("%Y-%m-%d"),
-        "scenario":           "ci_run",
-        "stage_reached":      "pytest",
-        "target_version":     "ci",
-        "production_version": "ci",
-        "blocked_at":         None if gate_result["passed"] else "gate",
-        "total":              gate_result["total"],
-        "succeeded":          gate_result["total"] - gate_result["failed"],
-        "failed":             gate_result["failed"],
-        "pass_rate":          gate_result["pass_rate"],
-        "rollback_triggered": not gate_result["passed"],
-    }
-    history.append(row)
+    date_str = datetime.now(UTC).strftime("%Y-%m-%d")
 
+    # Derive the next candidate version from the last entry in history
+    last_target = history[-1]["target_version"] if history else "1.0.219"
+    candidate_version = _bump_version(last_target)
+    last_production = history[-1]["production_version"] if history else "1.0.219"
+
+    if not gate_result["passed"]:
+        # pytest gate blocked — no device rollout happens, record it as blocked at gate
+        row = {
+            "day":                day,
+            "date":               date_str,
+            "scenario":           "normal_release",
+            "stage_reached":      "gate",
+            "target_version":     candidate_version,
+            "production_version": last_production,
+            "blocked_at":         "gate",
+            "total":              gate_result["total"],
+            "succeeded":          gate_result["total"] - gate_result["failed"],
+            "failed":             gate_result["failed"],
+            "pass_rate":          gate_result["pass_rate"],
+            "rollback_triggered": True,
+        }
+    else:
+        # pytest passed — simulate a staging rollout (low noise, CI environment)
+        staging_results = fleet.rollout("staging", candidate_version, fail_probability=0.05)
+        summary = fleet.health_summary(staging_results)
+        row = {
+            "day":                day,
+            "date":               date_str,
+            "scenario":           "normal_release",
+            "stage_reached":      "staging",
+            "target_version":     candidate_version,
+            "production_version": last_production,
+            "blocked_at":         "staging" if summary["rollback_triggered"] else "N/A",
+            **summary,
+        }
+
+    history.append(row)
     with open(HISTORY_FILE, 'w') as f:
         json.dump(history, f, indent=4)
 
