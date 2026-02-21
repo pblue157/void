@@ -418,5 +418,19 @@
         "failed": 1,
         "pass_rate": 0.857,
         "rollback_triggered": true
+    },
+    {
+        "day": 31,
+        "date": "2026-02-21",
+        "scenario": "ci_run",
+        "stage_reached": "pytest",
+        "target_version": "ci",
+        "production_version": "ci",
+        "blocked_at": null,
+        "total": 4,
+        "succeeded": 4,
+        "failed": 0,
+        "pass_rate": 1.0,
+        "rollback_triggered": false
     }
 ]
