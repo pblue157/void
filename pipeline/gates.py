@@ -3,12 +3,15 @@ import os
 import sys
 import yaml
 
-# Make sure project root is on sys.path so 'device_simulator' is importable
-# when gates.py is run directly (e.g. python pipeline/gates.py)
+from datetime import datetime, UTC
+
+# Ensure project root is on sys.path so 'device_simulator' is importable
+# when gates.py is run directly (e.g. python pipeline/gates.py).
+# Also add device_simulator/ itself so fleet.py's internal bare imports resolve.
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'device_simulator'))
 
 from device_simulator import fleet
-from datetime import datetime, UTC
 
 HISTORY_FILE  = os.path.join(os.path.dirname(__file__), '..', 'reports', 'test_history.json')
 RULES_FILE    = os.path.join(os.path.dirname(__file__), '..', 'configs', 'promotion_rules.yaml')
