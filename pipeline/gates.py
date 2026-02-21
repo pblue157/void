@@ -3,6 +3,10 @@ import os
 import sys
 import yaml
 
+# Make sure project root is on sys.path so 'device_simulator' is importable
+# when gates.py is run directly (e.g. python pipeline/gates.py)
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
 from device_simulator import fleet
 from datetime import datetime, UTC
 
