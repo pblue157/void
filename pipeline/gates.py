@@ -3,12 +3,15 @@ import os
 import sys
 import yaml
 
-# Make sure project root is on sys.path so 'device_simulator' is importable
-# when gates.py is run directly (e.g. python pipeline/gates.py)
+from datetime import datetime, UTC
+
+# Ensure project root is on sys.path so 'device_simulator' is importable
+# when gates.py is run directly (e.g. python pipeline/gates.py).
+# Also add device_simulator/ itself so fleet.py's internal bare imports resolve.
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'device_simulator'))
 
 from device_simulator import fleet
-from datetime import datetime, UTC
 
 HISTORY_FILE  = os.path.join(os.path.dirname(__file__), '..', 'reports', 'test_history.json')
 RULES_FILE    = os.path.join(os.path.dirname(__file__), '..', 'configs', 'promotion_rules.yaml')
@@ -79,10 +82,17 @@ def append_to_history(gate_result: dict):
     day = len(history) + 1
     date_str = datetime.now(UTC).strftime("%Y-%m-%d")
 
-    # Derive the next candidate version from the last entry in history
-    last_target = history[-1]["target_version"] if history else "1.0.219"
+    # Scan backward for the last row with a real semver target_version.
+    # Old "ci_run" rows used "ci" as the version — skip those.
+    last_target = "1.0.219"
+    last_production = "1.0.219"
+    for row in reversed(history):
+        tv = row.get("target_version", "")
+        if tv.count(".") == 2:
+            last_target = tv
+            last_production = row.get("production_version", last_production)
+            break
     candidate_version = _bump_version(last_target)
-    last_production = history[-1]["production_version"] if history else "1.0.219"
 
     if not gate_result["passed"]:
         # pytest gate blocked — no device rollout happens, record it as blocked at gate
