@@ -1,5 +1,5 @@
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://release-health.streamlit.app)
-[![CI QA-Pipeline](https://github.com/pblue157/void/actions/workflows/ci.yml/badge.svg)](https://github.com/pblue157/void/actions/workflows/ci.yml)
+[![CI QA-Pipeline](https://github.com/pblue157/void/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/pblue157/void/actions/workflows/ci.yml)
 
 # QA Validation Platform
 
