@@ -1,4 +1,5 @@
-import json, pandas as pd
+import json
+import pandas as pd
 import os
 
 TEST_HISTORY_PATH = os.path.join(os.path.dirname(__file__), '..', 'reports', 'test_history.json')
