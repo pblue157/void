@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+.venv/
+venv/
+
+# Pytest related: CI will generate these files on every run, no need to track
+reports/pytest-results.json
+reports/pytest-integration-results.json

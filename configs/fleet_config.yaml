@@ -1,0 +1,36 @@
+device_groups:
+  staging:
+    - device_id: "device_S01"
+      fw_version: "1.0.219"
+    - device_id: "device_S02"
+      fw_version: "1.0.219"
+    - device_id: "device_S03"
+      fw_version: "1.0.219"
+
+  canary:
+    - device_id: "device_C01"
+      fw_version: "1.0.219"
+    - device_id: "device_C02"
+      fw_version: "1.0.219"
+    - device_id: "device_C03"
+      fw_version: "1.0.219"
+    - device_id: "device_C04"
+      fw_version: "1.0.219"
+    - device_id: "device_C05"
+      fw_version: "1.0.219"
+
+  production:
+    - device_id: "device_P01"
+      fw_version: "1.0.219"
+    - device_id: "device_P02"
+      fw_version: "1.0.219"
+    - device_id: "device_P03"
+      fw_version: "1.0.219"
+    - device_id: "device_P04"
+      fw_version: "1.0.219"
+    - device_id: "device_P05"
+      fw_version: "1.0.219"
+    - device_id: "device_P06"
+      fw_version: "1.0.219"
+    - device_id: "device_P07"
+      fw_version: "1.0.219"

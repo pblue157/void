@@ -1,0 +1,402 @@
+[
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 1,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 1,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 1,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 1,
+        "passed": true
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 2,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 2,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 2,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 2,
+        "passed": false
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 3,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 3,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 3,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 3,
+        "passed": false
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 4,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 4,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 4,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 4,
+        "passed": false
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 5,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 5,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 5,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 5,
+        "passed": true
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 6,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 6,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 6,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 6,
+        "passed": true
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 7,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 7,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 7,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 7,
+        "passed": true
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 8,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 8,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 8,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 8,
+        "passed": false
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 9,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 9,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 9,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 9,
+        "passed": true
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 10,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 10,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 10,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 10,
+        "passed": false
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 11,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 11,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 11,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 11,
+        "passed": false
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 12,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 12,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 12,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 12,
+        "passed": true
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 13,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 13,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 13,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 13,
+        "passed": false
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 14,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 14,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 14,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 14,
+        "passed": false
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 15,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 15,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 15,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 15,
+        "passed": true
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 16,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 16,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 16,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 16,
+        "passed": true
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 17,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 17,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 17,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 17,
+        "passed": false
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 18,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 18,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 18,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 18,
+        "passed": true
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 19,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 19,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 19,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 19,
+        "passed": true
+    },
+    {
+        "test_id": "test_device_starts_idle",
+        "run": 20,
+        "passed": true
+    },
+    {
+        "test_id": "test_normal_update_succeeds",
+        "run": 20,
+        "passed": true
+    },
+    {
+        "test_id": "test_rollback_restores_version",
+        "run": 20,
+        "passed": true
+    },
+    {
+        "test_id": "test_ota_delivery_timing",
+        "run": 20,
+        "passed": false
+    }
+]

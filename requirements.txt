@@ -1,0 +1,5 @@
+pytest
+pytest-json-report
+pyyaml
+streamlit
+pandas

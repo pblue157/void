@@ -1,0 +1,2 @@
+quarantined_tests:
+- test_ota_delivery_timing

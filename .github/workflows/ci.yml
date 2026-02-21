@@ -1,0 +1,77 @@
+name: CI QA-Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+
+  # Stage-1: Lint 
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ruff
+      - run: ruff check .
+
+  # Stage-2: Unit Tests
+  unit-tests:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt pytest-json-report
+      - name: Run unit tests and write JSON report
+        run: |
+          pytest tests/unit/ -v \
+            --json-report \
+            --json-report-file=reports/pytest-results.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pytest-results
+          path: reports/pytest-results.json
+
+  # Stage-3: Gate Check
+  # Reads pytest results, checks against promotion_rules.yaml,
+  # appends one row to test_history.json, then commits it back to the repo.
+  # Job fails if gate fails, PR cannot merge.
+  gate-check:
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt pytest-json-report
+      - uses: actions/download-artifact@v4
+        with:
+          name: pytest-results
+          path: reports/
+      - name: Evaluate promotion gate
+        run: python pipeline/gates.py
+        # gates.py exits 1 if gate fails. PR blocked from merging
+
+      - name: Run flake detector
+        run: python quality/flake_detector.py
+        # Reads test_run_history.json, quarantines flaky tests if any
+
+      - name: Commit updated test_history.json back to repo
+        run: |
+          git config user.name  "ci-bot"
+          git config user.email "ci@noreply.github.com"
+          git add reports/test_history.json configs/quarantined_tests.yaml || true
+          git diff --cached --quiet || git commit -m "ci: update test history and quarantine list [skip ci]"
+          git push

@@ -1,0 +1,2 @@
+min_pass_rate: 0.90        # block promotion if pass rate < this
+max_rollbacks_per_week: 2  # block promotion if rollbacks > this
