@@ -3,7 +3,7 @@
 
 # QA Validation Platform
 
-A QA platform for simulating firmware rollouts on a device fleet, checking if release is good enough to promote, and showing the results in a live dashboard.
+A QA platform for simulating firmware rollouts on a device fleet, checking if release is good enough to promote, and showing the results in a [live dashboard](https://release-health.streamlit.app/).
 
 ---
 
