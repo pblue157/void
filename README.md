@@ -103,3 +103,4 @@ flowchart LR
 | `configs/promotion_rules.yaml` | Pass-rate thresholds and gate rules |
 | `configs/flake_config.yaml` | Flake detection sensitivity |
 | `configs/quarantined_tests.yaml` | Tests excluded from gate evaluation |
+
