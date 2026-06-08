@@ -656,5 +656,19 @@
         "failed": 0,
         "pass_rate": 1.0,
         "rollback_triggered": false
+    },
+    {
+        "day": 48,
+        "date": "2026-06-08",
+        "scenario": "normal_release",
+        "stage_reached": "staging",
+        "target_version": "1.0.265",
+        "production_version": "1.0.248",
+        "blocked_at": "staging",
+        "total": 3,
+        "succeeded": 2,
+        "failed": 1,
+        "pass_rate": 0.667,
+        "rollback_triggered": true
     }
 ]
